@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:43:00 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/12 20:41:21 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/01/13 15:32:39 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <errno.h>
 
 typedef struct data
 {
@@ -41,3 +43,8 @@ typedef struct data
 int render(void);
 int close_window(t_data *data);
 char **get_map(void);
+void key_w(t_data *data);
+void key_a(t_data *data);
+void key_s(t_data *data);
+void key_d(t_data *data);
+void render_map(t_data *data);
