@@ -6,12 +6,13 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:35:27 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 00:27:08 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/01/24 01:22:43 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "mlx.h"
+#include "libft.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
