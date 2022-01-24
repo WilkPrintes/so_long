@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 10:38:57 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/14 23:07:28 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/01/22 00:35:35 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	key_d(t_data *data)
 
 int	key_a(t_data *data)
 {
+	printf("====key_a====\n");
 	if (data->map[data->p_line][data->p_column - 1] != '1')
 	{
 		if (data->map[data->p_line][data->p_column - 1] == 'C')
@@ -50,8 +51,13 @@ int	key_a(t_data *data)
 		}
 		if (data->map[data->p_line][data->p_column - 1] == 'E')
 		{
+			printf("Find E\n");
+			printf("%d | %d", data->p_collection, data->collection);
 			if (data->p_collection == data->collection)
+			{
+				printf("Fechando janela\n");
 				close_window(data);
+			}	
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 21:29:33 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/14 23:24:56 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:57:37 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,14 @@ char	**errors(char **map, char *line, int type)
 	free(line);
 	printf("Error\n");
 	if (type == 1)
-		printf("O mapa não está fechado\n");
+		printf("The map is not closed\n");
 	if (type == 2)
-		printf("O mapa não contem todos os elementos\n");
+		printf("The map does not contain all the elements\n");
 	if (type == 3)
-		printf("O mapa contem elementos inválidos\n");
+		printf("The map contains invalid elements\n");
 	if (type == 4)
-		printf("Caminho de mapa inválido\n");
+		printf("Invalid map path\n");
 	if (type == 5)
-		printf("Linha maior/menor encontrada\n");
+		printf("Major/smallest line found\n");
 	return (NULL);
 }
