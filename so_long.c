@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:43:26 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/22 00:25:15 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/01/24 12:56:41 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_key(int key, t_data *data)
 {
 	static int	count;
 	static int	validation;
-	printf("=====get_key=====\n");
+
 	if (validation != 1)
 		count = 0;
 	if (key == 65307)
@@ -40,6 +40,9 @@ int	get_key(int key, t_data *data)
 
 int	close_window(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	mlx_clear_window(data->ptr, data->win);
 	mlx_loop_end(data->ptr);
 	mlx_destroy_image(data->ptr, data->imgp);
@@ -51,6 +54,11 @@ int	close_window(t_data *data)
 	mlx_destroy_image(data->ptr, data->img1);
 	mlx_destroy_window(data->ptr, data->win);
 	mlx_destroy_display(data->ptr);
+	while (data->map[i])
+	{
+		free(data->map[i]);
+		i++;
+	}
 	free(data->map);
 	free(data->ptr);
 	exit(3);
@@ -64,28 +72,19 @@ int	main(int argc, char *argv[])
 	int		line;
 
 	error(argc, argv);
-	line = 0;
 	data.ptr = mlx_init();
 	printf("ptr iniciado, pegando mapa\n");
-	data.map = get_map(argv[1]);
-	printf("MAPA COMPLETO EM data.map\n");
-	if (data.map == NULL)
+	if (get_map(argv[1], &data) == 0)
 	{
 		free(data.ptr);
-		return (-1);
+		close(42);
 	}
-	count = ft_strlen(data.map[0]) - 1;
-	printf("Iniciado count\n");
-	while (data.map[line][count] != '\0')
-		line++;
-	printf("Total de linhas: %d\n", line);
-	data.win = mlx_new_window(data.ptr, 32 * count, 32 * (line + 1), "so_long");
+	printf("MAPA COMPLETO EM data.map\n");
+	printf("lines: %d | columns: %d\n", data.lines, data.columns);
+	printf("ptr: %p\n", data.ptr);
+	data.win = mlx_new_window(data.ptr, data.columns * 32, data.lines * 32, "so_long");
 	printf("data.win iniciada\n");
 	set_assets(&data);
-	data.lines = line;
-	printf("data.lines iniciada\n");
-	data.columns = count -1;
-	printf("data.columns iniciada\n");
 	render_map(&data);
 	mlx_key_hook(data.win, &get_key, &data);
 	mlx_hook(data.win, 17, 0, close_window, &data);

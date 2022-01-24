@@ -14,8 +14,7 @@ INCLUDE		:=	$(foreach directory, $(HEADER_DIR), -I $(directory))
 
 SRC_DIR		:=	./
 
-SRC_FILE	:=	controlers.c maps.c render_map.c so_long.c \
-				ft_strncmp.c ft_strnstr.c
+SRC_FILE	:=	controlers.c maps.c render_map.c so_long.c
 				
 SRC			:=	$(foreach file, $(SRC_FILE), $(SRC_DIR)$(file))
 
@@ -34,7 +33,7 @@ LIBS		:=	-L $(MLX_DIR) -lmlx -Ilmlx -lXext -lX11 $(MLX)
 all: $(NAME) 
 
 $(NAME): $(LIBFT) $(MLX) $(SRC)
-	$(CC) $(SRC) $(GNL) -o $@ $(INCLUDE) $(LIBS) $(LIBFT_FLAGS)
+	$(CC) -g $(SRC) $(GNL) -o $@ $(INCLUDE) $(LIBS) $(LIBFT_FLAGS)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)

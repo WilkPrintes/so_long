@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:08:25 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/22 00:36:23 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/01/24 02:56:42 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,20 @@ void	render_map(t_data *data)
 	int	line;
 	int	count;
 
-	printf("=====render_map=====\n");
 	line = 0;
 	count = 0;
-	while (line <= data->lines)
+	data->p_collection = 0;
+	data->collection = 0;
+	while (line <= data->lines - 1)
 	{
-		printf("linha: %d\n", line);
 		count = 0;
-		while (count <= data->columns)
+		while (count <= data->columns - 1)
 		{
-			printf("colunas %d\n", count);
 			put_image_to_window(data, count, line);
 			count++;
 		}
 		line++;
 	}
-	printf("=====render_map ok=====\n");
 }
 
 void	put_image_to_window(t_data *data, int count, int line)
@@ -44,8 +42,6 @@ void	put_image_to_window(t_data *data, int count, int line)
 
 	x = 32 * count;
 	y = 32 * line;
-	data->p_collection = 0;
-	printf("=====put_image_to_window=====\n");
 	if (data->map[line][count] == '1')
 		mlx_put_image_to_window(data->ptr, data->win, data->img1, x, y);
 	else if (data->map[line][count] == '0')
@@ -63,5 +59,4 @@ void	put_image_to_window(t_data *data, int count, int line)
 		data->p_column = count;
 		mlx_put_image_to_window(data->ptr, data->win, data->imgp, x, y);
 	}
-	printf("=====put_image_to_window ok=====\n");
 }

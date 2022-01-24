@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:35:27 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 01:22:43 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/01/24 12:27:57 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct data
 }t_data;
 
 int		close_window(t_data *data);
-char	**get_map(char *path);
+int		get_map(char *path, t_data *data);
 int		key_w(t_data *data);
 int		key_a(t_data *data);
 int		key_s(t_data *data);
