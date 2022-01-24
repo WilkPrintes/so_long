@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:43:26 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 12:56:41 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/01/24 18:01:46 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,8 @@ int	main(int argc, char *argv[])
 
 	error(argc, argv);
 	data.ptr = mlx_init();
-	printf("ptr iniciado, pegando mapa\n");
-	if (get_map(argv[1], &data) == 0)
-	{
-		free(data.ptr);
-		close(42);
-	}
+	get_map(argv[1], &data);
 	printf("MAPA COMPLETO EM data.map\n");
-	printf("lines: %d | columns: %d\n", data.lines, data.columns);
-	printf("ptr: %p\n", data.ptr);
 	data.win = mlx_new_window(data.ptr, data.columns * 32, data.lines * 32, "so_long");
 	printf("data.win iniciada\n");
 	set_assets(&data);

@@ -19,7 +19,8 @@ int	get_map(char *path, t_data *data)
 	int		fd;
 	char	*temp;
 	char	*line;
-
+	int		i;
+	i = 0;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (errors(4));
