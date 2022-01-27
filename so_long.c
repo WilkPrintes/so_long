@@ -34,7 +34,6 @@ int	get_key(int key, t_data *data)
 	if (key == 115)
 		count = count + key_s(data);
 	printf("passos = %d\n", count);
-	printf("=====get_key ok=====\n");
 	validation = 1;
 }
 
@@ -74,9 +73,7 @@ int	main(int argc, char *argv[])
 	error(argc, argv);
 	data.ptr = mlx_init();
 	get_map(argv[1], &data);
-	printf("MAPA COMPLETO EM data.map\n");
 	data.win = mlx_new_window(data.ptr, data.columns * 32, data.lines * 32, "so_long");
-	printf("data.win iniciada\n");
 	set_assets(&data);
 	render_map(&data);
 	mlx_key_hook(data.win, &get_key, &data);
@@ -86,25 +83,21 @@ int	main(int argc, char *argv[])
 
 int	error(int argc, char *argv[])
 {
-	printf("verificando erros\n");
 	if (argc != 2)
 	{
 		printf("invalid number of arguments\n");
-		exit(-1);
+		exit(0);
 	}
 	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == 0)
 	{
 		printf("Error\nYou must use a '.ber' file.\n");
 		exit(0);
-		return (-1);
 	}
-	printf("tudo ok\n");
 	return (0);
 }
 
 void	set_assets(t_data *data)
 {
-	printf("=====set_assets=====\n");
 	data->img1 = mlx_xpm_file_to_image(data->ptr,
 			"./assets/1.xpm", &data->img_x, &data->img_y);
 	data->img0 = mlx_xpm_file_to_image(data->ptr,
@@ -119,5 +112,4 @@ void	set_assets(t_data *data)
 			"./assets/p_l.xpm", &data->img_x, &data->img_y);
 	data->imgp_up = mlx_xpm_file_to_image(data->ptr,
 			"./assets/p_up.xpm", &data->img_x, &data->img_y);
-	printf("=====set_assets ok=====\n");
 }

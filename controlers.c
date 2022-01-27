@@ -25,6 +25,7 @@ int	key_d(t_data *data)
 		{
 			if (data->p_collection == data->collection)
 				close_window(data);
+			return (0);
 		}
 		else
 		{
@@ -36,7 +37,7 @@ int	key_d(t_data *data)
 		}
 		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	key_a(t_data *data)
@@ -52,6 +53,7 @@ int	key_a(t_data *data)
 		{
 			if (data->p_collection == data->collection)
 				close_window(data);
+			return (0);
 		}
 		else
 		{
@@ -79,6 +81,7 @@ int	key_w(t_data *data)
 		{
 			if (data->p_collection == data->collection)
 				close_window(data);
+			return (0);	
 		}
 		else
 		{
@@ -106,6 +109,7 @@ int	key_s(t_data *data)
 		{
 			if (data->p_collection == data->collection)
 				close_window(data);
+			return (0);
 		}
 		else
 		{
