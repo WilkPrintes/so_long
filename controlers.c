@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 10:38:57 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 02:55:59 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/01/27 20:42:39 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	key_w(t_data *data)
 		{
 			if (data->p_collection == data->collection)
 				close_window(data);
-			return (0);	
+			return (0);
 		}
 		else
 		{

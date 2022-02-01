@@ -6,18 +6,18 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:32:46 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 12:25:48 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/01 14:53:11 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		errors(int type);
+int		errors(int type, t_data *data);
 int		full_line(char *line);
 void	free_matriz(t_data *data);
 int		walls(char **map, int lines);
-int	*find_contents(char **map, int lines, int columns);
-int	validations(char **map, int count, int len_init);
+int		*find_contents(char **map, int lines, int columns);
+int		validations(char **map, int count, int len_init);
 
 int	get_map(char *path, t_data *data)
 {
@@ -30,7 +30,8 @@ int	get_map(char *path, t_data *data)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		errors(4);
+		printf("Error\n");
+		printf("Invalid map path\n");
 		mlx_destroy_display(data->ptr);
 		free(data->ptr);
 		exit(3);
@@ -41,7 +42,7 @@ int	get_map(char *path, t_data *data)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break ;
+			break ;  
 		temp = ft_strjoin(temp, line);
 		free(line);
 		data->lines++;
@@ -51,32 +52,19 @@ int	get_map(char *path, t_data *data)
 	free(temp);
 	free(line);
 	if (full_line(data->map[0]) == 1)
-	{
-		errors(1);
-		free_matriz(data);
-	}
+		errors(1, data);
 	if (full_line(data->map[data->lines - 1]) == 1)
-	{
-		errors(1);
-		free_matriz(data);
-	}
+		errors(1, data);
 	if (walls(data->map, data->lines) == 1)
-	{
-		errors(1);
-		free_matriz(data);
-	}
+		errors(1, data);
 	i = validations(data->map, data->lines, data->columns);
 	if (i != 0)
-	{
-		errors(i);
-		free_matriz(data);
-	}
-		
+		errors(i, data);
 }
 
 int	full_line(char *line)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(line) - 1;
 	while (len >= 0)
@@ -87,14 +75,14 @@ int	full_line(char *line)
 	}
 }
 
-int walls(char **map, int lines)
+int	walls(char **map, int lines)
 {
-	int index;
-	int line;
+	int	index;
+	int	line;
 
 	index = ft_strlen(map[0]) - 1;
 	line = 0;
-	while(line != lines)
+	while (line != lines)
 	{
 		if (map[line][0] != '1')
 			return (1);
@@ -150,7 +138,6 @@ int	validations(char **map, int count, int len_init)
 		free(components);
 		return (5);
 	}
-
 	if (components[0] != 1 || components[1] != 1 || components[2] != 1)
 	{
 		free(components);
@@ -165,7 +152,7 @@ int	validations(char **map, int count, int len_init)
 	return (0);
 }
 
-int	errors(int type)
+int	errors(int type, t_data *data)
 {
 	printf("Error\n");
 	if (type == 1)
@@ -178,10 +165,11 @@ int	errors(int type)
 		printf("Invalid map path\n");
 	if (type == 5)
 		printf("Major/smallest line found\n");
+	free_matriz(data);
 	return (0);
 }
 
-void free_matriz(t_data *data)
+void	free_matriz(t_data *data)
 {
 	int	i;
 

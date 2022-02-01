@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:43:26 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 18:01:46 by coder            ###   ########.fr       */
+/*   Updated: 2022/01/27 20:41:47 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int	main(int argc, char *argv[])
 	error(argc, argv);
 	data.ptr = mlx_init();
 	get_map(argv[1], &data);
-	data.win = mlx_new_window(data.ptr, data.columns * 32, data.lines * 32, "so_long");
+	data.win = mlx_new_window(data.ptr, data.columns * 32,
+			data.lines * 32, "so_long");
 	set_assets(&data);
 	render_map(&data);
 	mlx_key_hook(data.win, &get_key, &data);
