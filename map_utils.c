@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:30:31 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/05 16:50:39 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/05 22:04:03 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,18 @@ int	walls(char **map, int lines)
 		line++;
 	}
 	return (0);
+}
+
+void	empty_file(t_data *data, char *temp, char *line)
+{
+	if (data->lines == 0)
+	{
+		free(temp);
+		free(line);
+		printf("Error\n");
+		printf("The map does not contain all the elements\n");
+		mlx_destroy_display(data->ptr);
+		free(data->ptr);
+		exit(3);
+	}
 }

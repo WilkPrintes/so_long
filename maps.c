@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:32:46 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/05 20:17:23 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/05 22:03:43 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int		errors(int type, t_data *data);
 int		full_line(char *line);
-void	free_matriz(t_data *data);
-int		walls(char **map, int lines);
-int		*find_contents(char **map, int lines, int columns);
 int		len_lines(t_data *data);
 int		validation(t_data *data);
 
@@ -40,12 +37,7 @@ int	get_map(char *path, t_data *data)
 		free(line);
 		data->lines++;
 	}
-	if (data->lines == 0)
-	{
-		free(temp);
-		free(line);
-		errors(2, data);
-	}
+	empty_file(data, temp, line);
 	data->map = ft_split(temp, '\n');
 	data->columns = ft_strlen(data->map[0]);
 	free(temp);
@@ -108,12 +100,7 @@ int	errors(int type, t_data *data)
 	if (type == 1)
 		printf("The map is not closed\n");
 	if (type == 2)
-	{
 		printf("The map does not contain all the elements\n");
-		mlx_destroy_display(data->ptr);
-		free(data->ptr);
-		exit(3);
-	}
 	if (type == 3)
 		printf("The map contains invalid elements\n");
 	if (type == 4)

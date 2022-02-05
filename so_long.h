@@ -6,16 +6,17 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:35:27 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/05 16:50:50 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/05 21:52:55 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <mlx.h>
-#include "libft.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef SO_LONG_H
+# include "get_next_line.h"
+# include <mlx.h>
+# include "libft.h"
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 typedef struct data
 {
@@ -52,3 +53,6 @@ void	free_matriz(t_data *data);
 int		validations(char **map, int count, int len_init);
 int		*find_contents(char **map, int lines, int columns);
 int		walls(char **map, int lines);
+void	empty_file(t_data *data, char *temp, char *line);
+
+#endif
