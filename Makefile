@@ -12,7 +12,7 @@ INCLUDE		:=	$(foreach directory, $(HEADER_DIR), -I $(directory))
 
 SRC_DIR		:=	./
 
-SRC_FILE	:=	controlers.c maps.c render_map.c so_long.c
+SRC_FILE	:=	controlers.c maps.c map_utils.c render_map.c so_long.c
 				
 SRC			:=	$(foreach file, $(SRC_FILE), $(SRC_DIR)$(file))
 

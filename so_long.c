@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:43:26 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/27 20:41:47 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/02 14:58:22 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	get_key(int key, t_data *data)
 		count = count + key_w(data);
 	if (key == 115)
 		count = count + key_s(data);
-	printf("passos = %d\n", count);
+	printf("steps = %d\n", count);
 	validation = 1;
 }
 
@@ -86,7 +86,7 @@ int	error(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		printf("invalid number of arguments\n");
+		printf("Error\ninvalid number of arguments\n");
 		exit(0);
 	}
 	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == 0)

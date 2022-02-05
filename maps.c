@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:32:46 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/01 14:53:11 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/05 20:17:23 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,40 +17,49 @@ int		full_line(char *line);
 void	free_matriz(t_data *data);
 int		walls(char **map, int lines);
 int		*find_contents(char **map, int lines, int columns);
-int		validations(char **map, int count, int len_init);
+int		len_lines(t_data *data);
+int		validation(t_data *data);
 
 int	get_map(char *path, t_data *data)
 {
 	int		fd;
 	char	*temp;
 	char	*line;
-	int		i;
 
-	i = 0;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-	{
-		printf("Error\n");
-		printf("Invalid map path\n");
-		mlx_destroy_display(data->ptr);
-		free(data->ptr);
-		exit(3);
-	}
+		errors(4, data);
 	data->lines = 0;
 	temp = ft_strdup("");
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break ;  
+			break ;
 		temp = ft_strjoin(temp, line);
 		free(line);
 		data->lines++;
+	}
+	if (data->lines == 0)
+	{
+		free(temp);
+		free(line);
+		errors(2, data);
 	}
 	data->map = ft_split(temp, '\n');
 	data->columns = ft_strlen(data->map[0]);
 	free(temp);
 	free(line);
+	validation(data);
+}
+
+int	validation(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	if (len_lines(data) == 1)
+		errors(5, data);
 	if (full_line(data->map[0]) == 1)
 		errors(1, data);
 	if (full_line(data->map[data->lines - 1]) == 1)
@@ -60,6 +69,23 @@ int	get_map(char *path, t_data *data)
 	i = validations(data->map, data->lines, data->columns);
 	if (i != 0)
 		errors(i, data);
+	return (0);
+}
+
+int	len_lines(t_data *data)
+{
+	int	line;
+	int	len;
+
+	line = 1;
+	len = ft_strlen(data->map[0]);
+	while (line < data->lines)
+	{
+		if (len != ft_strlen(data->map[line]))
+			return (1);
+		line++;
+	}
+	return (0);
 }
 
 int	full_line(char *line)
@@ -73,82 +99,6 @@ int	full_line(char *line)
 			return (1);
 		len--;
 	}
-}
-
-int	walls(char **map, int lines)
-{
-	int	index;
-	int	line;
-
-	index = ft_strlen(map[0]) - 1;
-	line = 0;
-	while (line != lines)
-	{
-		if (map[line][0] != '1')
-			return (1);
-		if (map[line][index] != '1')
-			return (1);
-		line++;
-	}
-}
-
-int	*find_contents(char **map, int lines, int columns)
-{
-	int		*counter;
-	int		line;
-	int		column;
-	char	*temp;
-
-	line = 0;
-	column = 0;
-	counter = malloc(sizeof(int) * 4);
-	counter[0] = 0;
-	counter[1] = 0;
-	counter[2] = 0;
-	counter[3] = 0;
-	while (line != lines)
-	{
-		temp = ft_strdup(map[line]);
-		while (column != columns)
-		{
-			if (temp[column] == 'P')
-				counter[0] = 1;
-			else if (temp[column] == 'E')
-				counter[1] = 1;
-			else if (temp[column] == 'C')
-				counter[2] = 1;
-			else if (temp[column] != '1' && temp[column] != '0')
-				counter[3] = -1;
-			column++;
-		}
-		free(temp);
-		column = 0;
-		line++;
-	}
-	return (counter);
-}
-
-int	validations(char **map, int count, int len_init)
-{
-	int		*components;
-
-	components = find_contents(map, count, len_init);
-	if (components == NULL)
-	{
-		free(components);
-		return (5);
-	}
-	if (components[0] != 1 || components[1] != 1 || components[2] != 1)
-	{
-		free(components);
-		return (2);
-	}	
-	if (components[3] == -1)
-	{
-		free(components);
-		return (3);
-	}
-	free(components);
 	return (0);
 }
 
@@ -158,29 +108,23 @@ int	errors(int type, t_data *data)
 	if (type == 1)
 		printf("The map is not closed\n");
 	if (type == 2)
+	{
 		printf("The map does not contain all the elements\n");
+		mlx_destroy_display(data->ptr);
+		free(data->ptr);
+		exit(3);
+	}
 	if (type == 3)
 		printf("The map contains invalid elements\n");
 	if (type == 4)
+	{
 		printf("Invalid map path\n");
+		mlx_destroy_display(data->ptr);
+		free(data->ptr);
+		exit(3);
+	}
 	if (type == 5)
-		printf("Major/smallest line found\n");
+		printf("Major line found\n");
 	free_matriz(data);
 	return (0);
-}
-
-void	free_matriz(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->map[i])
-	{
-		free(data->map[i]);
-		i++;
-	}
-	mlx_destroy_display(data->ptr);
-	free(data->map);
-	free(data->ptr);
-	exit(3);
 }
