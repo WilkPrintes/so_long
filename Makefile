@@ -6,11 +6,11 @@ LIBFT = libraries/libft/libft.a
 LIBFT_PATH = libraries/libft
 LIBFT_FLAGS = -L $(LIBFT_PATH) -lft
 
-HEADER_DIR	:=	./ ./get_next_line ./libraries/libft
+HEADER_DIR	:=	./sources/ ./get_next_line ./libraries/libft
 
 INCLUDE		:=	$(foreach directory, $(HEADER_DIR), -I $(directory))
 
-SRC_DIR		:=	./
+SRC_DIR		:=	./sources/
 
 SRC_FILE	:=	controlers.c maps.c map_utils.c render_map.c so_long.c
 				
