@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 17:14:11 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 12:01:15 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/05 23:41:09 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	s2_val = (char *)s2;
 	result = malloc(sizeof(char) * (ft_strlen(s1_val) + ft_strlen(s2_val)) + 1);
 	if (result == NULL)
-		return (NULL);	
+		return (NULL);
 	result = join(s1_val, s2_val, result);
 	free(s1);
 	return (result);

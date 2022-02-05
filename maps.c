@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:32:46 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/05 22:03:43 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/05 23:36:47 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ int	errors(int type, t_data *data)
 	}
 	if (type == 5)
 		printf("Major line found\n");
+	if (type == 6)
+		printf("more than one player found\n");
 	free_matriz(data);
 	return (0);
 }

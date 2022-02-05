@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wprintes <wilkp90@gmail.com>               +#+  +:+       +#+        */
+/*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 08:24:03 by wprintes          #+#    #+#             */
-/*   Updated: 2021/10/04 20:47:35 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/05 23:41:43 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	separator = counter_c((char *) s, c);
 	result = ft_calloc(separator + 1, sizeof(char *));
-	if (separator == 1 )
+	if (separator == 1)
 	{
 		result[0] = ft_strtrim((char *) s, &c);
 		result[1] = NULL;
