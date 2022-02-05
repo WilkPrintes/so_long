@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:30:31 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/05 23:38:59 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/06 00:38:53 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ int	*find_contents(char **map, int lines, int columns)
 	column = 0;
 	counter = malloc(sizeof(int) * 4);
 	counter[0] = 0;
+	counter[1] = 0;
+	counter[2] = 0;
+	counter[3] = 0;
 	while (line != lines)
 	{
 		temp = ft_strdup(map[line]);
