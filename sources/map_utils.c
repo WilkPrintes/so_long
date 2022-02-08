@@ -6,13 +6,13 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:30:31 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 18:41:32 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 22:32:57 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_matriz(t_data *data)
+void	free_matrix(t_data *data)
 {
 	int	i;
 
@@ -93,16 +93,16 @@ int	walls(char **map, int lines)
 	int	index;
 	int	line;
 
-	index = ft_strlen(map[0]) - 1;
+	index = ft_strlen(map[0]);
 	line = 0;
-	while (line != lines)
+	while (line < lines)
 	{
+		if (map[line] == NULL || ft_strlen(map[line]) != index)
+			return (5);
 		if (map[line][0] != '1')
 			return (1);
-		if (map[line][index] != '1')
+		if (map[line][index - 1] != '1')
 			return (1);
-		if (ft_strlen(map[line]) == index)
-			return (5);
 		line++;
 	}
 	return (0);

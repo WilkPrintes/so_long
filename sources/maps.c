@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:32:46 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 18:24:14 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 22:36:10 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ int	validation(t_data *data)
 	int	i;
 
 	i = 0;
+	if (walls(data->map, data->lines) == 5)
+		errors(5, data);
+	if (walls(data->map, data->lines) == 1)
+		errors(1, data);
 	if (full_line(data->map[0]) == 1)
 		errors(1, data);
 	if (full_line(data->map[data->lines - 1]) == 1)
 		errors(1, data);
-	if (walls(data->map, data->lines) == 1)
-		errors(1, data);
-	if (walls(data->map, data->lines) == 5)
-		errors(5, data);
 	if (len_lines(data) == 1)
 		errors(5, data);
 	i = validations(data->map, data->lines, data->columns);
@@ -72,7 +72,6 @@ int	len_lines(t_data *data)
 	int	len;
 
 	line = 1;
-	printf("RUMBLING\n");
 	len = ft_strlen(data->map[0]);
 	while (line < data->lines)
 	{
@@ -114,9 +113,9 @@ int	errors(int type, t_data *data)
 		exit(3);
 	}
 	if (type == 5)
-		printf("Minor or minor line found\n");
+		printf("Difference in line size\n");
 	if (type == 6)
-		printf("more than one player found\n");
-	free_matriz(data);
+		printf("More than one player found\n");
+	free_matrix(data);
 	return (0);
 }

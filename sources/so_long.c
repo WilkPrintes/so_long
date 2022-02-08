@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:43:26 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 18:52:12 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 22:32:58 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char *argv[])
 	if (data.lines == data.columns)
 	{
 		printf("Error\nSquare map\n");
-		free_matriz(&data);
+		free_matrix(&data);
 	}
 	data.win = mlx_new_window(data.ptr, data.columns * 32,
 			data.lines * 32, "so_long");

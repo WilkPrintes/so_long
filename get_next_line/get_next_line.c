@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 10:56:53 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 01:44:03 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 22:22:42 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*get_next_line(int fd)
 		if (!backup)
 			return (free_null(buffer));
 		free(buffer);
-		size = gft_strlen(backup);
-		buffer = gft_strdup(backup);
+		size = n_strlen(backup);
+		buffer = n_strdup(backup);
 		backup = free_null(backup);
 	}
 	buffer[size] = '\0';
@@ -53,7 +53,7 @@ static int	has_nl(char *buffer)
 	size_t	counter;
 
 	counter = 0;
-	if (gft_strlen(buffer) <= 0)
+	if (n_strlen(buffer) <= 0)
 		return (0);
 	while (buffer[counter] != '\0' && buffer[counter] != '\n')
 		counter++;
@@ -67,7 +67,7 @@ static char	*read_line(char *buffer, int fd, ssize_t size, char **backup)
 	char	*temp;
 	char	*aux;
 
-	temp = gft_strdup(buffer);
+	temp = n_strdup(buffer);
 	if (*backup != NULL)
 		new_backup(backup, &temp, &aux);
 	while (has_nl(buffer) != 1 && size > 0)
@@ -76,26 +76,26 @@ static char	*read_line(char *buffer, int fd, ssize_t size, char **backup)
 		buffer = malloc(sizeof (char) * (BUFFER_SIZE + 1));
 		size = read(fd, buffer, BUFFER_SIZE);
 		buffer[size] = '\0';
-		aux = gft_strjoin(temp, buffer);
+		aux = n_strjoin(temp, buffer);
 		free(temp);
-		temp = gft_strdup(aux);
+		temp = n_strdup(aux);
 		free(aux);
 	}
 	free(buffer);
-	aux = gft_substr(temp, 0, find_n(temp) + 1);
-	if (gft_strlen(aux) < gft_strlen(temp))
-		*backup = gft_substr(temp, find_n(temp) + has_nl(aux), gft_strlen(temp));
+	aux = n_substr(temp, 0, find_n(temp) + 1);
+	if (n_strlen(aux) < n_strlen(temp))
+		*backup = n_substr(temp, find_n(temp) + has_nl(aux), n_strlen(temp));
 	free(temp);
-	if (gft_strlen(aux) == 0)
+	if (n_strlen(aux) == 0)
 		return (free_null(aux));
 	return (aux);
 }
 
 static void	new_backup(char **backup, char **temp, char **aux)
 {
-	*aux = gft_strdup(*temp);
+	*aux = n_strdup(*temp);
 	free(*temp);
-	*temp = gft_strjoin(*backup, *aux);
+	*temp = n_strjoin(*backup, *aux);
 	free(*aux);
 	*backup = free_null(*backup);
 }

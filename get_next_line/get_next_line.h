@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 11:27:05 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 01:43:19 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 22:22:41 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*gft_strjoin(char const *s1, char const *s2);
-ssize_t	gft_strlen(const char *s);
-char	*gft_strdup(const char *src);
-char	*gft_substr(char const *s, unsigned int start, size_t len);
+char	*n_strjoin(char const *s1, char const *s2);
+ssize_t	n_strlen(const char *s);
+char	*n_strdup(const char *src);
+char	*n_substr(char const *s, unsigned int start, size_t len);
 size_t	find_n(char *buffer);
 
 #endif

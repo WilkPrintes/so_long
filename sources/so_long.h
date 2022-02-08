@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:35:27 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 18:55:09 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 22:32:59 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		key_d(t_data *data);
 int		render_map(t_data *data);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
 char	*ft_strnstr(const char *s1, const char *s2, size_t n);
-void	free_matriz(t_data *data);
+void	free_matrix(t_data *data);
 int		validations(char **map, int count, int len_init);
 int		*find_contents(char **map, int lines, int columns);
 int		walls(char **map, int lines);

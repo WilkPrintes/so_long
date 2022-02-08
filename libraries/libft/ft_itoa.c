@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 14:50:58 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 19:34:16 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 22:23:29 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_itoa(int n)
 static int	decimal_places(int i)
 {
 	int	count;
-	
+
 	count = 0;
 	while (i > 0)
 	{

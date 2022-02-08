@@ -6,19 +6,19 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 11:04:17 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 01:43:05 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 22:22:41 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*gft_strjoin(const char *str1, const char *str2)
+char	*n_strjoin(const char *str1, const char *str2)
 {
 	size_t	len;
 	size_t	index;
 	char	*result;
 
-	len = gft_strlen(str1) + gft_strlen(str2);
+	len = n_strlen(str1) + n_strlen(str2);
 	if (len == 0)
 		return (NULL);
 	result = malloc((len + 1) * sizeof(char));
@@ -41,7 +41,7 @@ char	*gft_strjoin(const char *str1, const char *str2)
 	return (result);
 }
 
-ssize_t	gft_strlen(const char *s)
+ssize_t	n_strlen(const char *s)
 {
 	int	counter;
 
@@ -55,7 +55,7 @@ ssize_t	gft_strlen(const char *s)
 	return (counter);
 }
 
-char	*gft_strdup(const char *str)
+char	*n_strdup(const char *str)
 {
 	size_t	i;
 	size_t	len;
@@ -64,7 +64,7 @@ char	*gft_strdup(const char *str)
 	if (!str)
 		return (NULL);
 	i = 0;
-	len = gft_strlen(str) + 1;
+	len = n_strlen(str) + 1;
 	s = malloc(sizeof(char) * len);
 	if (s == NULL)
 		return (NULL);
@@ -76,7 +76,7 @@ char	*gft_strdup(const char *str)
 	return (s);
 }
 
-char	*gft_substr(char const *s, unsigned int start, size_t len)
+char	*n_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	srclen;
@@ -84,9 +84,9 @@ char	*gft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	srclen = gft_strlen(s);
+	srclen = n_strlen(s);
 	if (start > srclen)
-		return (gft_strdup(""));
+		return (n_strdup(""));
 	if (start + len > srclen)
 		len = srclen - start;
 	str = (char *)malloc(sizeof(char) * (len + 1));
