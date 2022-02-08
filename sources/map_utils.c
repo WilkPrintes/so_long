@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:30:31 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 18:04:45 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:21:35 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int	walls(char **map, int lines)
 	line = 0;
 	while (line != lines)
 	{
+		if (ft_strlen(map[line]) != index)
+			return (5);
 		if (map[line][0] != '1')
 			return (1);
 		if (map[line][index] != '1')

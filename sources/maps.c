@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:32:46 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 18:07:20 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:24:14 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	validation(t_data *data)
 		errors(1, data);
 	if (walls(data->map, data->lines) == 1)
 		errors(1, data);
+	if (walls(data->map, data->lines) == 5)
+		errors(5, data);
 	if (len_lines(data) == 1)
 		errors(5, data);
 	i = validations(data->map, data->lines, data->columns);
@@ -112,7 +114,7 @@ int	errors(int type, t_data *data)
 		exit(3);
 	}
 	if (type == 5)
-		printf("Major line found\n");
+		printf("Minor or minor line found\n");
 	if (type == 6)
 		printf("more than one player found\n");
 	free_matriz(data);
