@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:08:25 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 02:56:42 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:38:29 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_image_to_window(t_data *data, int count, int line);
 
-void	render_map(t_data *data)
+int	render_map(t_data *data)
 {
 	int	line;
 	int	count;

@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 20:35:27 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/05 21:52:55 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:55:09 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		key_w(t_data *data);
 int		key_a(t_data *data);
 int		key_s(t_data *data);
 int		key_d(t_data *data);
-void	render_map(t_data *data);
+int		render_map(t_data *data);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
 char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 void	free_matriz(t_data *data);
