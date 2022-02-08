@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   controlers.c                                       :+:      :+:    :+:   */
+/*   controllers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 10:38:57 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 22:31:45 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 23:07:16 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int	key_d(t_data *data)
 		{
 			mlx_put_image_to_window(data->ptr, data->win,
 				data->img0, 32 * data->p_column, 32 * data->p_line);
-			data->p_column++;
+			data->map[data->p_line][data->p_column++] = '0';
 			mlx_put_image_to_window(data->ptr, data->win,
 				data->imgp, 32 * data->p_column, 32 * data->p_line);
+			data->map[data->p_line][data->p_column] = 'P';
 		}
 		return (1);
 	}
@@ -59,9 +60,10 @@ int	key_a(t_data *data)
 		{
 			mlx_put_image_to_window(data->ptr, data->win,
 				data->img0, 32 * data->p_column, 32 * data->p_line);
-			data->p_column--;
+			data->map[data->p_line][data->p_column--] = '0';
 			mlx_put_image_to_window(data->ptr, data->win,
 				data->imgp_l, 32 * data->p_column, 32 * data->p_line);
+			data->map[data->p_line][data->p_column] = 'P';
 		}
 		return (1);
 	}
@@ -87,9 +89,10 @@ int	key_w(t_data *data)
 		{
 			mlx_put_image_to_window(data->ptr, data->win,
 				data->img0, 32 * data->p_column, 32 * data->p_line);
-			data->p_line--;
+			data->map[data->p_line--][data->p_column] = '0';
 			mlx_put_image_to_window(data->ptr, data->win,
-				data->imgp_up, 32 * data->p_column, 32 * data->p_line);
+				data->imgp_l, 32 * data->p_column, 32 * data->p_line);
+			data->map[data->p_line][data->p_column] = 'P';
 		}
 		return (1);
 	}
@@ -115,9 +118,10 @@ int	key_s(t_data *data)
 		{
 			mlx_put_image_to_window(data->ptr, data->win,
 				data->img0, 32 * data->p_column, 32 * data->p_line);
-			data->p_line++;
+			data->map[data->p_line++][data->p_column] = '0';
 			mlx_put_image_to_window(data->ptr, data->win,
-				data->imgp, 32 * data->p_column, 32 * data->p_line);
+				data->imgp_l, 32 * data->p_column, 32 * data->p_line);
+			data->map[data->p_line][data->p_column] = 'P';
 		}
 		return (1);
 	}
