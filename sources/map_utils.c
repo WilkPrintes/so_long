@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:30:31 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/06 00:38:53 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:04:45 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ int	validations(char **map, int count, int len_init)
 	int		*components;
 
 	components = find_contents(map, count, len_init);
-	if (components == NULL)
-	{
-		free(components);
-		return (5);
-	}
 	if (components[1] != 1 || components[2] != 1)
 	{
 		free(components);

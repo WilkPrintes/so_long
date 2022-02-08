@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:32:46 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/05 23:36:47 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:07:20 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ int	validation(t_data *data)
 	int	i;
 
 	i = 0;
-	if (len_lines(data) == 1)
-		errors(5, data);
 	if (full_line(data->map[0]) == 1)
 		errors(1, data);
 	if (full_line(data->map[data->lines - 1]) == 1)
 		errors(1, data);
 	if (walls(data->map, data->lines) == 1)
 		errors(1, data);
+	if (len_lines(data) == 1)
+		errors(5, data);
 	i = validations(data->map, data->lines, data->columns);
 	if (i != 0)
 		errors(i, data);
@@ -70,6 +70,7 @@ int	len_lines(t_data *data)
 	int	len;
 
 	line = 1;
+	printf("RUMBLING\n");
 	len = ft_strlen(data->map[0]);
 	while (line < data->lines)
 	{

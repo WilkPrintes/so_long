@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:43:26 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/05 23:30:07 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/06 01:46:50 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	main(int argc, char *argv[])
 	get_map(argv[1], &data);
 	data.win = mlx_new_window(data.ptr, data.columns * 32,
 			data.lines * 32, "so_long");
+	if (data.columns == data.lines)
+		close_window(&data);
 	set_assets(&data);
 	render_map(&data);
 	mlx_key_hook(data.win, &get_key, &data);
