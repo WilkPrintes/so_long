@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wprintes <wilkp90@gmail.com>               +#+  +:+       +#+        */
+/*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 14:50:58 by wprintes          #+#    #+#             */
-/*   Updated: 2021/10/03 18:56:47 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:34:16 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,12 @@ char	*ft_itoa(int n)
 
 static int	decimal_places(int i)
 {
-	int	total;
 	int	count;
-
+	
 	count = 0;
-	total = 0;
 	while (i > 0)
 	{
 		i = i / 10;
-		total = 10 * 10;
 		count++;
 	}
 	return (count);

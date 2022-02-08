@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wprintes <wilkp90@gmail.com>               +#+  +:+       +#+        */
+/*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 00:09:30 by wprintes          #+#    #+#             */
-/*   Updated: 2021/10/01 08:24:33 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:33:49 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,14 @@ static int	potentiation(int i)
 
 static int	decimal_places(long i)
 {
-	int	total;
 	int	count;
 
 	if (i == 0)
 		return (1);
 	count = 0;
-	total = 0;
 	while (i > 0)
 	{
 		i = i / 10;
-		total = 10 * 10;
 		count++;
 	}
 	return (count);
