@@ -6,27 +6,13 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:30:31 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 22:32:57 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/09 16:42:10 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_matrix(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->map[i])
-	{
-		free(data->map[i]);
-		i++;
-	}
-	mlx_destroy_display(data->ptr);
-	free(data->map);
-	free(data->ptr);
-	exit(3);
-}
+int	*init_var(int *line, int *column);
 
 int	validations(char **map, int count, int len_init)
 {
@@ -59,16 +45,10 @@ int	*find_contents(char **map, int lines, int columns)
 	int		column;
 	char	*temp;
 
-	line = 0;
-	column = 0;
-	counter = malloc(sizeof(int) * 4);
-	counter[0] = 0;
-	counter[1] = 0;
-	counter[2] = 0;
-	counter[3] = 0;
+	counter = init_var(&line, &column);
 	while (line != lines)
 	{
-		temp = ft_strdup(map[line]);
+		temp = ft_strdup(map[line++]);
 		while (column != columns)
 		{
 			if (temp[column] == 'P')
@@ -83,9 +63,22 @@ int	*find_contents(char **map, int lines, int columns)
 		}
 		free(temp);
 		column = 0;
-		line++;
 	}
 	return (counter);
+}
+
+int	*init_var(int *line, int *column)
+{
+	int	*result;
+
+	*line = 0;
+	*column = 0;
+	result = malloc(sizeof(int) * 4);
+	result[0] = 0;
+	result[1] = 0;
+	result[2] = 0;
+	result[3] = 0;
+	return (result);
 }
 
 int	walls(char **map, int lines)

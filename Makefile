@@ -6,7 +6,7 @@ LIBFT = libraries/libft/libft.a
 LIBFT_PATH = libraries/libft
 LIBFT_FLAGS = -L $(LIBFT_PATH) -lft
 
-HEADER_DIR	:=	./sources/ ./get_next_line ./libraries/libft
+HEADER_DIR	:=	./sources/ ./libraries/get_next_line ./libraries/libft
 
 INCLUDE		:=	$(foreach directory, $(HEADER_DIR), -I $(directory))
 
@@ -18,7 +18,7 @@ SRC			:=	$(foreach file, $(SRC_FILE), $(SRC_DIR)$(file))
 
 GNL_FILE	:=	get_next_line.c get_next_line_utils.c
 
-GNL_DIR		:=	./get_next_line/
+GNL_DIR		:=	./libraries/get_next_line/
 
 GNL			:=	$(foreach file, $(GNL_FILE), $(GNL_DIR)$(file))
 

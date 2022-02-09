@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 12:08:25 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 18:38:29 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/09 16:42:42 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,20 @@ void	put_image_to_window(t_data *data, int count, int line)
 		data->p_column = count;
 		mlx_put_image_to_window(data->ptr, data->win, data->imgp, x, y);
 	}
+}
+
+void	free_matrix(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->map[i])
+	{
+		free(data->map[i]);
+		i++;
+	}
+	mlx_destroy_display(data->ptr);
+	free(data->map);
+	free(data->ptr);
+	exit(3);
 }
