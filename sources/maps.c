@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:32:46 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 22:36:10 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/11 02:22:11 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,24 +98,24 @@ int	full_line(char *line)
 
 int	errors(int type, t_data *data)
 {
-	printf("Error\n");
+	ft_printf("Error\n");
 	if (type == 1)
-		printf("The map is not closed\n");
+		ft_printf("The map is not closed\n");
 	if (type == 2)
-		printf("The map does not contain all the elements\n");
+		ft_printf("The map does not contain all the elements\n");
 	if (type == 3)
-		printf("The map contains invalid elements\n");
+		ft_printf("The map contains invalid elements\n");
 	if (type == 4)
 	{
-		printf("Invalid map path\n");
+		ft_printf("Invalid map path\n");
 		mlx_destroy_display(data->ptr);
 		free(data->ptr);
 		exit(3);
 	}
 	if (type == 5)
-		printf("Difference in line size\n");
+		ft_printf("Difference in line size\n");
 	if (type == 6)
-		printf("More than one player found\n");
+		ft_printf("More than one player found\n");
 	free_matrix(data);
 	return (0);
 }

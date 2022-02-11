@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:43:26 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/08 22:32:58 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/11 02:22:16 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	get_key(int key, t_data *data)
 		count = count + key_w(data);
 	if (key == 115)
 		count = count + key_s(data);
-	printf("steps = %d\n", count);
+	ft_printf("steps = %d\n", count);
 	validation = 1;
 }
 
@@ -75,7 +75,7 @@ int	main(int argc, char *argv[])
 	get_map(argv[1], &data);
 	if (data.lines == data.columns)
 	{
-		printf("Error\nSquare map\n");
+		ft_printf("Error\nSquare map\n");
 		free_matrix(&data);
 	}
 	data.win = mlx_new_window(data.ptr, data.columns * 32,
@@ -94,12 +94,12 @@ int	error(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		printf("Error\ninvalid number of arguments\n");
+		ft_printf("Error\ninvalid number of arguments\n");
 		exit(0);
 	}
 	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == 0)
 	{
-		printf("Error\nYou must use a '.ber' file.\n");
+		ft_printf("Error\nYou must use a '.ber' file.\n");
 		exit(0);
 	}
 	return (0);

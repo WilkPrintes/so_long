@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 16:30:31 by wprintes          #+#    #+#             */
-/*   Updated: 2022/02/09 16:42:10 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/11 02:22:08 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	empty_file(t_data *data, char *temp, char *line)
 	{
 		free(temp);
 		free(line);
-		printf("Error\n");
-		printf("The map does not contain all the elements\n");
+		ft_printf("Error\n");
+		ft_printf("The map does not contain all the elements\n");
 		mlx_destroy_display(data->ptr);
 		free(data->ptr);
 		exit(3);

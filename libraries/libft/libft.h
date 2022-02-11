@@ -6,7 +6,7 @@
 /*   By: wprintes < wprintes@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 00:42:03 by wprintes          #+#    #+#             */
-/*   Updated: 2022/01/24 12:01:31 by wprintes         ###   ########.fr       */
+/*   Updated: 2022/02/11 02:21:46 by wprintes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+
+# if __APPLE__
+#  define IS_MACOS 1
+# else
+#  define IS_MACOS 0
+# endif
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -49,5 +56,13 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+int		dec_to_hex(unsigned int a, int cap);
+int		dec_to_hex_l(unsigned long a, int cap);
+int		ft_printf(const char *s, ...);
+int		ft_printf(const char *s, ...);
+int		ft_putstr(char *s);
+int		ft_putchar(const int c);
+char	*ft_strchr(const char *str, int c);
+char	*ft_utoa(unsigned int n);
 
 #endif
